@@ -1,0 +1,5 @@
+@import url("./layout.css");
+@import url("./editor.css");
+@import url("./components.css");
+:root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#0b1120;color:#e8edf7;--surface:#121c2e;--border:#293750;--muted:#9aa9c1;--accent:#66e3c4;--accent-ink:#08251f}
+*{box-sizing:border-box}body{margin:0;min-width:320px;min-height:100vh}button{font:inherit}

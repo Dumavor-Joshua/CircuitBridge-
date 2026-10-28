@@ -1,0 +1,10 @@
+import { createProject } from "./core/project.js";
+import { saveProject, loadProject } from "./storage/project-files.js";
+const message=document.querySelector("#project-message");
+const button=document.querySelector("#new-project-button");
+const status=document.querySelector("#app-status");
+const key="circuitbridge.active-project";
+let project=loadProject(key)??createProject({name:"Untitled circuit"});
+if(message)message.textContent=`Project: ${project.name}`;
+saveProject(key,project);
+button?.addEventListener("click",()=>{project=createProject({name:"Untitled circuit"});saveProject(key,project);if(message)message.textContent=`Project: ${project.name} · New project created`;if(status)status.textContent="New project created. Visual editing is the next milestone.";});

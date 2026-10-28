@@ -1,0 +1,1 @@
+export const voltageSourceDefinition={type:"voltage-source",label:"DC voltage source",category:"source",properties:{voltageVolts:5},pins:[{id:"positive",label:"+"},{id:"negative",label:"−"}]};

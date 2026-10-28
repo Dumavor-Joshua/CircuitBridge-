@@ -1,0 +1,1 @@
+export function createWirePath({x1,y1,x2,y2}){for(const v of [x1,y1,x2,y2])if(!Number.isFinite(v))throw new TypeError("Wire coordinates must be finite.");return `M ${x1} ${y1} L ${x2} ${y2}`;}

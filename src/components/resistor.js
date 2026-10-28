@@ -1,0 +1,1 @@
+export const resistorDefinition={type:"resistor",label:"Resistor",category:"passive",properties:{resistanceOhms:1000},pins:[{id:"a",label:"A"},{id:"b",label:"B"}]};

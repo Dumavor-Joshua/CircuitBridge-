@@ -1,0 +1,3 @@
+import test from "node:test";import assert from "node:assert/strict";import {solveSeriesCircuit} from "../src/simulation/dc-solver.js";
+test("estimates current for 5 V and 1 kΩ",()=>{const r=solveSeriesCircuit({components:[{type:"voltage-source",properties:{voltageVolts:5}},{type:"resistor",properties:{resistanceOhms:1000}}]});assert.equal(r.ok,true);assert.equal(r.currentAmps,0.005);});
+test("reports unsupported circuit configuration",()=>assert.equal(solveSeriesCircuit({components:[]}).ok,false));

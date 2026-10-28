@@ -1,0 +1,1 @@
+export function createWorkspace(container){if(!container)throw new TypeError("Workspace container is required.");return {container,clear(){container.replaceChildren();},setMessage(message){container.setAttribute("aria-label",message);}};}

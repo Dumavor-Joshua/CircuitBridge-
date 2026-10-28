@@ -1,0 +1,1 @@
+export function formatSimulationResult(r){if(!r?.ok)return (r?.errors??["Simulation failed."]).join(" ");return `Estimated current: ${(r.currentAmps*1000).toFixed(2)} mA (simplified series model).`;}

@@ -1,0 +1,1 @@
+export function createBoard({model="uno"}={}){if(model!=="uno")throw new RangeError(`Unsupported board model: ${model}`);return {model,digitalPins:Array.from({length:14},(_,pin)=>({pin,mode:"input",value:0}))};}

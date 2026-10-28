@@ -1,0 +1,1 @@
+export function bindEditorInteractions(_workspace,handlers={}){return ()=>{if(typeof handlers.cleanup==="function")handlers.cleanup();};}

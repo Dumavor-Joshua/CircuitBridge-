@@ -1,0 +1,2 @@
+/** Arduino C/C++ execution is not implemented yet; this is the future integration boundary. */
+export function createRuntimeAdapter(){return {available:false,async run(){throw new Error("Arduino code execution is not implemented yet.");},stop(){}};}

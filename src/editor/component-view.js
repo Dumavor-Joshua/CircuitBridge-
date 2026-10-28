@@ -1,0 +1,1 @@
+export function createComponentView(component){const el=document.createElement("div");el.className="circuit-component";el.dataset.componentId=component.id;el.setAttribute("role","group");el.setAttribute("aria-label",component.label??component.type);el.textContent=component.label??component.type;return el;}

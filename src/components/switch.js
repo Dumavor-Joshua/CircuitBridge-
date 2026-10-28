@@ -1,0 +1,1 @@
+export const switchDefinition={type:"switch",label:"Switch",category:"control",properties:{closed:false,resistanceClosedOhms:0.01,resistanceOpenOhms:1e12},pins:[{id:"a",label:"A"},{id:"b",label:"B"}]};

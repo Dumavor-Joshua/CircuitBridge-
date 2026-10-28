@@ -1,0 +1,1 @@
+export const ledDefinition={type:"led",label:"LED",category:"semiconductor",properties:{forwardVoltage:2,maxCurrentAmps:0.02},pins:[{id:"anode",label:"Anode"},{id:"cathode",label:"Cathode"}]};
