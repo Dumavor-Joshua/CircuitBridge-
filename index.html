@@ -4,20 +4,63 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101827">
-  <meta name="description" content="A lightweight electronics learning workspace for building and understanding circuits.">
-  <title>CircuitBridge — Circuit workspace</title>
+  <meta name="description" content="CircuitBridge is a lightweight electronics learning workspace with a full circuit simulation lab.">
+  <title>CircuitBridge — Electronics lab</title>
   <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-  <header class="app-header"><a class="brand" href="./">Circuit<span>Bridge</span></a><span class="header-note">Electronics learning workspace</span></header>
+  <header class="app-header">
+    <a class="brand" href="./">Circuit<span>Bridge</span></a>
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="#simulation-lab">Simulation lab</a>
+      <a href="#builder">Circuit builder</a>
+    </nav>
+    <span class="header-note">Electronics learning workspace</span>
+  </header>
   <main class="app-shell">
-    <section class="welcome-panel"><p class="eyebrow">EARLY ACCESS · FIRST BUILD</p><h1>Build. Connect. Understand.</h1><p>Add common components, connect their pins, and save your circuit project. This first editor focuses on the circuit model and wiring; electrical simulation is the next milestone.</p><p id="app-status" role="status" aria-live="polite">Workspace ready.</p></section>
-    <section class="workspace-panel">
-      <div class="panel-heading"><div><p class="eyebrow">WORKSPACE</p><h2>Circuit canvas</h2></div><button id="new-project-button" class="button button-subtle" type="button">New project</button></div>
-      <div class="editor-toolbar"><label for="component-type">Component</label><select id="component-type" aria-label="Component type"></select><button id="add-component-button" class="button button-primary" type="button">Add component</button><button id="export-project-button" class="button button-subtle" type="button">Export</button><label class="button button-subtle import-label" for="import-project-input">Import</label><input id="import-project-input" type="file" accept=".json,application/json"></div>
+    <section class="welcome-panel">
+      <p class="eyebrow">CIRCUITBRIDGE LAB</p>
+      <h1>Build it. Run it. Learn it.</h1>
+      <p>Explore circuits with a live simulation engine, then use the lightweight CircuitBridge builder to organise components and connections. This is an independent learning project, not an official Tinkercad product.</p>
+      <p id="app-status" role="status" aria-live="polite">Workspace ready.</p>
+    </section>
+
+    <section id="simulation-lab" class="workspace-panel simulation-panel">
+      <div class="panel-heading">
+        <div><p class="eyebrow">LIVE SIMULATION</p><h2>Simulation lab</h2></div>
+        <a class="button button-primary" href="https://www.falstad.com/circuit/circuitjs.html" target="_blank" rel="noopener noreferrer">Open simulator in new tab ↗</a>
+      </div>
+      <p class="section-intro">This panel uses the open-source CircuitJS simulator for live circuit behaviour, component editing, and animated voltage/current display. It is an independent engine embedded from its public website.</p>
+      <div class="simulator-frame-wrap">
+        <iframe
+          id="circuitjs-frame"
+          title="CircuitJS interactive electronics simulator"
+          src="https://www.falstad.com/circuit/circuitjs.html"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="fullscreen"
+        ></iframe>
+      </div>
+      <p class="footnote">Requires an internet connection. If the simulator does not appear inside this page, use “Open simulator in new tab”. CircuitJS is a separate open-source project; see its <a href="https://github.com/pfalstad/circuitjs1" target="_blank" rel="noopener noreferrer">source repository</a> and license before redistributing or bundling its code.</p>
+    </section>
+
+    <section id="builder" class="workspace-panel">
+      <div class="panel-heading">
+        <div><p class="eyebrow">CIRCUITBRIDGE BUILDER</p><h2>My circuit project</h2></div>
+        <button id="new-project-button" class="button button-subtle" type="button">New project</button>
+      </div>
+      <p class="section-intro">This lightweight builder saves your component layout and pin connections locally. Full live simulation is currently provided by the Simulation Lab above.</p>
+      <div class="editor-toolbar">
+        <label for="component-type">Component</label>
+        <select id="component-type" aria-label="Component type"></select>
+        <button id="add-component-button" class="button button-primary" type="button">Add component</button>
+        <button id="export-project-button" class="button button-subtle" type="button">Export</button>
+        <label class="button button-subtle import-label" for="import-project-input">Import</label>
+        <input id="import-project-input" type="file" accept=".json,application/json">
+      </div>
       <div id="workspace" class="workspace" aria-label="Circuit editor"></div>
       <p id="project-message" class="help-text" role="status">Project: Untitled circuit</p>
-      <p class="footnote">To wire a circuit, select one pin and then another. Removing a component also removes its connected wires. Projects are saved in this browser; use Export to keep a portable copy.</p>
+      <p class="footnote">Select one pin and then another to create a wire. Removing a component also removes its connected wires. Projects are saved in this browser; use Export to keep a portable copy.</p>
     </section>
   </main>
   <footer class="app-footer">CircuitBridge · Built for learning, one step at a time.</footer>
