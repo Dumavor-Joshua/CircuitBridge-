@@ -18,7 +18,7 @@ let project = loadProject(key) ?? createProject();
 let selectedPinId = null;
 
 function announce(text) { if (status) status.textContent = text; }
-function persist() { touchProject(project); saveProject(key, project); if (message) message.textContent = `Project: ${project.name} · ${project.components.length} component(s) · ${project.wires.length} wire(s)`; }
+function persist() { touchProject(project); const saved = saveProject(key, project); if (message) message.textContent = `Project: ${project.name} · ${project.components.length} component(s) · ${project.wires.length} wire(s)${saved ? "" : " · Browser storage unavailable; use Export to keep your changes."}`; return saved; }
 function makeButton(text, className, onClick) { const button = document.createElement("button"); button.type = "button"; button.className = className; button.textContent = text; button.addEventListener("click", onClick); return button; }
 function render() {
   if (!workspace) return;
@@ -58,4 +58,4 @@ newButton?.addEventListener("click", () => { project = createProject(); selected
 addButton?.addEventListener("click", addComponent);
 exportButton?.addEventListener("click", () => { try { const blob = new Blob([serializeProject(project)], { type: "application/json" }); const url = URL.createObjectURL(blob); const link = document.createElement("a"); link.href = url; link.download = `${project.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") || "circuit"}.circuitbridge.json`; link.click(); URL.revokeObjectURL(url); announce("Project exported as JSON."); } catch (error) { announce(error.message); } });
 importInput?.addEventListener("change", async () => { const file = importInput.files?.[0]; if (!file) return; try { const parsed = parseProject(await file.text()); const errors = validateProject(parsed); if (errors.length) throw new Error(errors[0]); project = parsed; selectedPinId = null; persist(); render(); announce("Project imported successfully."); } catch (error) { announce(`Import failed: ${error.message}`); } finally { importInput.value = ""; } });
-fillSelect(); persist(); render();
+fillSelect(); render(); persist();
